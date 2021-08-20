@@ -76,19 +76,25 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Coupon
+                Divisions
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('division_index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Coupon</p>
+                  <p>Divisions</p>
                   
                 </a>
               </li>
-             
+              <li class="nav-item">
+                <a href="{{route('district_index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Districs</p>
+                  
+                </a>
+              </li>
             </ul>           
           </li>
          
