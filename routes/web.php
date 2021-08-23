@@ -44,3 +44,15 @@ Route::post('/district_store','backend\DistrictController@store')->name('distric
 Route::get('/district_delete/{id}','backend\DistrictController@delete')->name('district_delete');
 Route::get('/district_edit/{id}','backend\DistrictController@edit')->name('district_edit');
 Route::post('/district_update/{id}','backend\DistrictController@update')->name('district_update');
+
+//json data multiple dependency
+Route::get('get-sub-category/{id}','Backend\PostController@GetSubcat');
+Route::get('get-district/{id}','Backend\PostController@Getdistrict');
+
+//Posts--------
+Route::get('/post_create','backend\PostController@create')->name('post_create');
+Route::post('/post_store','backend\PostController@store')->name('post_store');
+Route::get('/post_index','backend\PostController@index')->name('post_index');
+Route::get('/post_delete/{id}','backend\PostController@delete')->name('post_delete');
+Route::get('/post_edit/{id}','backend\PostController@edit')->name('post_edit');
+Route::post('/post_update/{id}','backend\PostController@update')->name('post_update');

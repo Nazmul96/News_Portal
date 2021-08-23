@@ -57,18 +57,6 @@
                   <p>Subcategory</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Child Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Brand</p>
-                </a>
-              </li>
             </ul>           
           </li>
           
@@ -92,6 +80,32 @@
                 <a href="{{route('district_index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Districs</p>
+                  
+                </a>
+              </li>
+            </ul>           
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Posts
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('post_create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Post</p>
+                  
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('post_index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Post</p>
                   
                 </a>
               </li>

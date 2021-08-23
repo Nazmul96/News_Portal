@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Dashboard</title>
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
  <!-- Font Awesome Icons -->
@@ -101,8 +101,27 @@
 <!-- daterangepicker -->
 <script src="{{ asset('public/frontend/plugins/moment/moment.min.js') }}"></script>
 <script src="{{ asset('public/frontend/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+<!-- Tags input  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+<script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+
 <!-- Summernote -->
 <script src="{{ asset('public/frontend/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>
+
 <!-- datatable javascript code -->
 <script>
   $(function () {
@@ -139,6 +158,29 @@
      @endif
 </script>
 
+<!-- sweet alert before logout -->
+<script>
+  $(document).on("click","#logout",function(e){
+    e.preventDefault();
+    var link=$(this).attr("href");
+    swal({
+        title: "Are you want to logout?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+                window.location.href=link;
+          }
+         else {
+          swal("Not Logout!");
+        }
+      });
+  })
+</script>
+<!-- sweet alert before delete -->
 <script>
   $(document).on("click","#delete",function(e){
     e.preventDefault();
