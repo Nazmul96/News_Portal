@@ -56,3 +56,11 @@ Route::get('/post_index','backend\PostController@index')->name('post_index');
 Route::get('/post_delete/{id}','backend\PostController@delete')->name('post_delete');
 Route::get('/post_edit/{id}','backend\PostController@edit')->name('post_edit');
 Route::post('/post_update/{id}','backend\PostController@update')->name('post_update');
+
+//Social settings--------
+Route::get('/social_setting','backend\settingController@social_setting')->name('social_setting');
+Route::post('/social_update/{id}','backend\settingController@social_update')->name('social_update');
+
+//SEO settings--------
+Route::get('/seo_setting','backend\settingController@seo_setting')->name('seo_setting');
+Route::post('/seo_update/{id}','backend\settingController@seo_update')->name('seo_update');
