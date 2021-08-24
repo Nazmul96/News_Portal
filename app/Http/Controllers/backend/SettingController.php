@@ -65,4 +65,113 @@ class SettingController extends Controller
           return Redirect()->back()->with($notification);
     }
 
+    //Namaz Setting-------
+
+    public function namaz_setting()
+    {
+        $namaz=DB::table('namaz')->first();
+    	return view('backend.settings.namaz',compact('namaz'));
+    }
+
+    public function namaz_update(Request $request,$id)
+    {
+        $data=array();
+          $data['fajr']=$request->fajr;
+          $data['johr']=$request->johr;
+          $data['asor']=$request->asor;
+          $data['magrib']=$request->magrib;
+          $data['esha']=$request->esha;
+          $data['jummah']=$request->jummah;
+
+          DB::table('namaz')->where('id',$id)->update($data);
+
+             $notification=array(
+                        'messege'=>'Successfully Update',
+                        'alert-type'=>'success'
+                         );
+            return Redirect()->back()->with($notification);
+    }
+
+    //LiveTV Setting-------
+
+    public function livetv_setting()
+    {
+        $livetv=DB::table('livetv')->first();
+    	return view('backend.settings.livetv',compact('livetv'));
+    }
+
+    public function livetv_update(Request $request,$id)
+    {
+          $data=array();
+          $data['embed_code']=$request->embed_code;        
+          DB::table('livetv')->where('id',$id)->update($data);
+          $notification=array(
+                        'messege'=>'Successfully Update',
+                        'alert-type'=>'success'
+                         );
+         return Redirect()->back()->with($notification);
+    }
+
+    public function active_livetv($id)
+    {
+    	DB::table('livetv')->where('id',$id)->update(['status'=>1]);
+    	 $notification=array(
+                        'messege'=>'Successfully  LiveTv on your website',
+                        'alert-type'=>'success'
+                         );
+         return Redirect()->back()->with($notification);
+    }
+
+    public function deactive_livetv($id)
+    {
+    		DB::table('livetv')->where('id',$id)->update(['status'=>0]);
+    	   $notification=array(
+                        'messege'=>' LiveTv off  your website',
+                        'alert-type'=>'success'
+                         );
+         return Redirect()->back()->with($notification);
+    }
+
+     //Notice Setting-------
+
+     public function notice_setting()
+     {
+         $notice=DB::table('notices')->first();
+         return view('backend.settings.notice',compact('notice'));
+     }
+
+     public function notice_update(Request $request,$id)
+    {
+          $data=array();
+          $data['notice']=$request->notice;        
+          DB::table('notices')->where('id',$id)->update($data);
+          $notification=array(
+                        'messege'=>'Successfully Update',
+                        'alert-type'=>'success'
+                         );
+         return Redirect()->back()->with($notification);
+    }
+
+    public function active_notice($id)
+    {
+        DB::table('notices')->where('id',$id)->update(['status'=>1]);
+        $notification=array(
+                    'messege'=>' Notice on  your website',
+                    'alert-type'=>'success'
+                     );
+     return Redirect()->back()->with($notification);
+    }
+
+    public function deactive_notice($id)
+    {
+    		DB::table('notices')->where('id',$id)->update(['status'=>0]);
+    	   $notification=array(
+                        'messege'=>'Notice off  your website',
+                        'alert-type'=>'success'
+                         );
+         return Redirect()->back()->with($notification);
+    }
+
+
+
 }

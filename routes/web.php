@@ -57,6 +57,8 @@ Route::get('/post_delete/{id}','backend\PostController@delete')->name('post_dele
 Route::get('/post_edit/{id}','backend\PostController@edit')->name('post_edit');
 Route::post('/post_update/{id}','backend\PostController@update')->name('post_update');
 
+//settings=========
+
 //Social settings--------
 Route::get('/social_setting','backend\settingController@social_setting')->name('social_setting');
 Route::post('/social_update/{id}','backend\settingController@social_update')->name('social_update');
@@ -64,3 +66,19 @@ Route::post('/social_update/{id}','backend\settingController@social_update')->na
 //SEO settings--------
 Route::get('/seo_setting','backend\settingController@seo_setting')->name('seo_setting');
 Route::post('/seo_update/{id}','backend\settingController@seo_update')->name('seo_update');
+
+//Namaz settings--------
+Route::get('/namaz_setting','backend\settingController@namaz_setting')->name('namaz_setting');
+Route::post('/namaz_update/{id}','backend\settingController@namaz_update')->name('namaz_update');
+
+//LiveTV settings--------
+Route::get('/livetv_setting','backend\settingController@livetv_setting')->name('livetv_setting');
+Route::post('/livetv_update/{id}','backend\settingController@livetv_update')->name('livetv_update');
+Route::get('/active_livetv/{id}','backend\settingController@active_livetv')->name('active_livetv');
+Route::get('/deactive_livetv/{id}','backend\settingController@deactive_livetv')->name('deactive_livetv');
+
+//Notice settings--------
+Route::get('/notice_setting','backend\settingController@notice_setting')->name('notice_setting');
+Route::post('/notice_update/{id}','backend\settingController@notice_update')->name('notice_update');
+Route::get('/active_notice/{id}','backend\settingController@active_notice')->name('active_notice');
+Route::get('/deactive_notice/{id}','backend\settingController@deactive_notice')->name('deactive_notice');
