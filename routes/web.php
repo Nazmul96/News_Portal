@@ -82,3 +82,24 @@ Route::get('/notice_setting','backend\settingController@notice_setting')->name('
 Route::post('/notice_update/{id}','backend\settingController@notice_update')->name('notice_update');
 Route::get('/active_notice/{id}','backend\settingController@active_notice')->name('active_notice');
 Route::get('/deactive_notice/{id}','backend\settingController@deactive_notice')->name('deactive_notice');
+
+//Photo Gallery--------
+Route::get('/photo_index','backend\GalleryController@photo_index')->name('photo_index');
+Route::post('/photo_store','backend\GalleryController@photo_store')->name('photo_store');
+Route::get('/photo_delete/{id}','backend\GalleryController@photo_delete')->name('photo_delete');
+Route::get('/photo_edit/{id}','backend\GalleryController@photo_edit')->name('photo_edit');
+Route::post('/photo_update/{id}','backend\GalleryController@photo_update')->name('photo_update');
+
+//Photo Gallery--------
+Route::get('/video_index','backend\GalleryController@video_index')->name('video_index');
+Route::post('/video_store','backend\GalleryController@video_store')->name('video_store');
+Route::get('/video_delete/{id}','backend\GalleryController@video_delete')->name('video_delete');
+Route::get('/video_edit/{id}','backend\GalleryController@video_edit')->name('video_edit');
+Route::post('/video_update/{id}','backend\GalleryController@video_update')->name('video_update');
+
+//Important Website settings--------
+Route::get('/important_website','backend\settingController@important_website')->name('important_website');
+Route::post('/important_website_store','backend\settingController@important_website_store')->name('important_website_store');
+Route::get('/important_website_delete/{id}','backend\settingController@delete')->name('important_website_delete');
+Route::get('/important_website_edit/{id}','backend\settingController@edit')->name('important_website_edit');
+Route::post('/important_website_update/{id}','backend\settingController@update')->name('important_website_update');

@@ -172,6 +172,59 @@ class SettingController extends Controller
          return Redirect()->back()->with($notification);
     }
 
+       //Important Webbsite Setting-------
+
+       public function important_website()
+       {
+           $website=DB::table('important_websites')->get();
+           return view('backend.settings.important_website',compact('website'));
+       }
+
+       public function important_website_store(Request $request)
+       {
+            $data=array();
+             $data['website_name_bn']=$request->website_name_bn;       
+             $data['website_name_en']=$request->website_name_en;       
+             $data['website_link']=$request->website_link;     
+             DB::table('important_websites')->insert($data);
+             $notification=array(
+                           'messege'=>'Successfully insert',
+                           'alert-type'=>'success'
+                            );
+            return Redirect()->back()->with($notification);
+       }
+
+       public function edit($id)
+       {
+           $data=DB::table('important_websites')->where('id',$id)->first();
+           return view('backend.settings.important_website_edit',compact('data'));
+       }
+
+       public function update(Request $request,$id)
+       {
+        $data=array();
+        $data['website_name_bn']=$request->website_name_bn;       
+        $data['website_name_en']=$request->website_name_en;       
+        $data['website_link']=$request->website_link;     
+        DB::table('important_websites')->where('id',$id)->update($data);
+        $notification=array(
+                      'messege'=>'Successfully Update',
+                      'alert-type'=>'success'
+                       );
+       return Redirect()->route('important_website')->with($notification);
+       }
+
+
+       public function delete($id)
+       {
+         DB::table('important_websites')->where('id',$id)->delete();
+         $notification=array(
+            'messege'=>'Successfully deleted',
+            'alert-type'=>'error',
+             );
+       return Redirect()->back()->with($notification);
+       }
+
 
 
 }

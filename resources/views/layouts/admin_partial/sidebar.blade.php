@@ -156,6 +156,39 @@
                   <p>Notice Setting</p>                  
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="important_website" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Important Website</p>                  
+                </a>
+              </li>
+            </ul>           
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Gallery
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('photo_index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Photo Gallery</p>
+                  
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('video_index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Video Gallery</p>
+                  
+                </a>
+              </li>
             </ul>           
           </li>
          
