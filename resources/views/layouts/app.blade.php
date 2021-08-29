@@ -8,23 +8,23 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
  <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="{{asset('public/frontend/plugins/fontawesome-free/css/all.min.css')}}">
+        <link rel="stylesheet" href="{{asset('public/backend/plugins/fontawesome-free/css/all.min.css')}}">
         <!-- overlayScrollbars -->
-        <link rel="stylesheet" href="{{asset('public/frontend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+        <link rel="stylesheet" href="{{asset('public/backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
         <!-- Theme style -->
-        <link rel="stylesheet" href="{{asset('public/frontend/dist/css/adminlte.min.css')}}">
+        <link rel="stylesheet" href="{{asset('public/backend/dist/css/adminlte.min.css')}}">
         <!-- sweet-alert and Toaster -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/toastr/toastr.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/sweetalert/sweetalert.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('public/backend/plugins/toastr/toastr.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('public/backend/plugins/sweetalert/sweetalert.css') }}">
         <!-- Daterange picker -->
-        <link rel="stylesheet" href="{{ asset('public/frontend/plugins/daterangepicker/daterangepicker.css') }}">
-        <link rel="stylesheet" href="{{ asset('public/frontend/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
+        <link rel="stylesheet" href="{{ asset('public/backend/plugins/daterangepicker/daterangepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
         <!-- summernote -->
-        <link rel="stylesheet" href="{{ asset('public/frontend/plugins/summernote/summernote-bs4.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/backend/plugins/summernote/summernote-bs4.css') }}">
         <!-- DataTables -->
-        <link rel="stylesheet" href="{{asset('public/frontend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-        <link rel="stylesheet" href="{{asset('public/frontend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-        <link rel="stylesheet" href="{{asset('public/frontend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 </head>
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     @guest
@@ -58,49 +58,49 @@
 
 <!-- jQuery -->
 
-<script src="{{asset('public/frontend/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
-<script src="{{asset('public/frontend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
-<script src="{{asset('public/frontend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('public/frontend/dist/js/adminlte.js')}}"></script>
+<script src="{{asset('public/backend/dist/js/adminlte.js')}}"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="{{asset('public/frontend/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
+<script src="{{asset('public/backend/plugins/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
 <!-- ChartJS -->
-<script src="{{asset('public/frontend/plugins/chart.js/Chart.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/chart.js/Chart.min.js')}}"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('public/frontend/dist/js/demo.js')}}"></script>
+<script src="{{asset('public/backend/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('public/frontend/dist/js/pages/dashboard2.js')}}"></script>
+<script src="{{asset('public/backend/dist/js/pages/dashboard2.js')}}"></script>
 
 
 <!-- sweet alert and toaster js file -->
-<script type="text/javascript" src="{{ asset('public/frontend/plugins/toastr/toastr.min.js') }}"></script>
-<script src="{{ asset('public/frontend/plugins/sweetalert/sweetalert.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/backend/plugins/toastr/toastr.min.js') }}"></script>
+<script src="{{ asset('public/backend/plugins/sweetalert/sweetalert.min.js') }}"></script>
 
 <!-- DataTables  & Plugins -->
-<script src="{{asset('public/frontend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/jszip/jszip.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/pdfmake/vfs_fonts.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('public/frontend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <!-- daterangepicker -->
-<script src="{{ asset('public/frontend/plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('public/frontend/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('public/backend/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('public/backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
 
 <!-- Tags input  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
@@ -108,7 +108,7 @@
 <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
 
 <!-- Summernote -->
-<script src="{{ asset('public/frontend/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('public/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script>
   $(function () {
     // Summernote

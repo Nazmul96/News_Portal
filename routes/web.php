@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 
 Auth::routes(['verify' => true]);
@@ -103,3 +103,9 @@ Route::post('/important_website_store','backend\settingController@important_webs
 Route::get('/important_website_delete/{id}','backend\settingController@delete')->name('important_website_delete');
 Route::get('/important_website_edit/{id}','backend\settingController@edit')->name('important_website_edit');
 Route::post('/important_website_update/{id}','backend\settingController@update')->name('important_website_update');
+
+
+//Frontend--------
+ //Language-----
+ Route::get('/language_ban','frontend\ExtraController@bangla')->name('language_ban');
+ Route::get('/language_en','frontend\ExtraController@english')->name('language_en');
