@@ -1,6 +1,7 @@
 @php
 	$category=DB::table('categories')->orderBy('id','ASC')->get();
-	$seo=DB::table('seos')->first();	
+	$seo=DB::table('seos')->first();
+	$social=DB::table('socials')->first();	
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +26,33 @@
 
     </head>
     <body>
+		@php
+		function bn_date($str)
+			{
+			 $en = array(1,2,3,4,5,6,7,8,9,0);
+			$bn = array('১','২','৩','৪','৫','৬','৭','৮','৯','০');
+			$str = str_replace($en, $bn, $str);
+			$en = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
+			$en_short = array( 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' );
+			$bn = array( 'জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'অগাস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর' );
+			$str = str_replace( $en, $bn, $str );
+			$str = str_replace( $en_short, $bn, $str );
+			$en = array('Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday');
+			 $en_short = array('Sat','Sun','Mon','Tue','Wed','Thu','Fri');
+			 $bn_short = array('শনি', 'রবি','সোম','মঙ্গল','বুধ','বৃহঃ','শুক্র');
+			 $bn = array('শনিবার','রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার');
+			 $str = str_replace( $en, $bn, $str );
+			 $str = str_replace( $en_short, $bn_short, $str );
+			 $en = array( 'am', 'pm' );
+			$bn = array( 'পূর্বাহ্ন', 'অপরাহ্ন' );
+			$str = str_replace( $en, $bn, $str );
+			 $str = str_replace( $en_short, $bn_short, $str );
+			 $en = array( '১২', '২৪' );
+			$bn = array( '৬', '১২' );
+			$str = str_replace( $en, $bn, $str );
+			 return $str;
+			}
+	@endphp
     <!-- header-start -->
 	<section class="hdr_section">
 		<div class="container-fluid">			
@@ -88,7 +116,7 @@
 						<ul>
 							<!-- version-start -->
 							@if(session()->get('language')=='English')
-							<li class="version"><a href="{{route('language_ban')}}">Bangla</a></li>
+							<li class="version"><a href="{{route('language_ban')}}">বাংলা</a></li>
 							@else
 							<li class="version"><a href="{{route('language_en')}}">English</a></li>
 							@endif
@@ -126,10 +154,11 @@
 								<div class="dropdown">
 								  <button class="dropbtn-02"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
 								  <div class="dropdown-content">
-									<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
-									<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
-									<a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i> Youtube</a>
-									<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+									<a href="{{$social->facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+									<a href="{{$social->twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+									<a href="{{$social->youtube}}"><i class="fa fa-youtube-play" aria-hidden="true"></i> Youtube</a>
+									<a href="{{$social->instagram}}"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+									<a href="{{$social->linkedin}}"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a>
 								  </div>
 								</div>
 							</li>
@@ -158,9 +187,28 @@
     			<div class="col-md-12 col-sm-12">
 					<div class="date">
 						<ul>
-							<li><i class="fa fa-map-marker" aria-hidden="true"></i>  ঢাকা </li>
-							<li><i class="fa fa-calendar" aria-hidden="true"></i> ০৩:৩২ অপরাহ্ন, বৃহস্পতিবার, ০৭ মে ২০২০, ২৪ বৈশাখ ১৪২৭, ১৩ রমজান ১৪৪১ </li>
-							<li><i class="fa fa-clock-o" aria-hidden="true"></i> আপডেট ৫ মিনিট আগে</li>
+							<script type="text/javascript" src="http://bangladate.appspot.com/index2.php"></script>
+							<li><i class="fa fa-map-marker" aria-hidden="true"></i>
+								@if(session()->get('language')=='English')
+								Dhaka
+								@else
+								ঢাকা  
+								@endif  
+							</li>
+							<li><i class="fa fa-calendar" aria-hidden="true"></i>
+							@if(session()->get('language')=='English')
+							{{ date('d M Y, l, h:i:s a')}} 	
+							@else
+							{{ bn_date(date('d M Y, l, h:i:s a'))}} 
+							@endif
+							 </li>
+							<li><i class="fa fa-clock-o" aria-hidden="true"></i>
+								@if(session()->get('language')=='English')
+								update 5 minutes ago
+								@else
+								আপডেট ৫ মিনিট আগে
+								@endif 
+								</li>
 						</ul>
 						
 					</div>
@@ -170,20 +218,75 @@
     </section><!-- /.date-close -->  
 
 	<!-- notice-start -->
-	 
+	@php
+	   $headline=DB::table('posts')->where('headline',1)
+	   				->orderBy('id','DESC')
+					->limit(5)
+					->get();
+
+
+	   $notice=DB::table('notices')->first(); 
+	@endphp 
     <section>
     	<div class="container-fluid">
 			<div class="row scroll">
 				<div class="col-md-2 col-sm-3 scroll_01 ">
-					শিরোনাম :
+					@if(session()->get('language')=='English')
+						Headline:
+					@else
+						শিরোনাম :
+					@endif 
+					
 				</div>
+				
 				<div class="col-md-10 col-sm-9 scroll_02">
-					<marquee>wellcome to our website...</marquee>
+					<marquee>
+						@foreach($headline as $row)
+						<a href="" style="color: white;">  
+							@if(session()->get('language')== 'English')
+									 *  {{ $row->title_en }}
+							@else
+									 * {{ $row->title_bn }}
+							@endif
+						</a>	
+					 @endforeach
+				   </marquee>
 				</div>
+				
 			</div>
     	</div>
-    </section>     
-
+    </section>
+	@if($notice->status==1)
+	<section>
+    	<div class="container-fluid">
+			<div class="row scroll">
+				<div class="col-md-2 col-sm-3 scroll_01" style="background-color: gray;">
+					@if(session()->get('language')=='English')
+						Notice:
+					@else
+					    নোটিশ :
+					@endif 
+					
+				</div>
+				
+				<div class="col-md-10 col-sm-9 scroll_02" style="background-color: purple;">
+					<marquee>
+						
+						<a href="" style="color: white;">  
+							@if(session()->get('language')== 'English')
+									{{ $notice->notice_en }}
+							@else
+									{{ $notice->notice }}
+							@endif
+						</a>	
+					 
+				   </marquee>
+				</div>
+				
+			</div>
+    	</div>
+    </section>
+	@endif
 	@yield('content')
 	
 	<!-- top-footer-start -->

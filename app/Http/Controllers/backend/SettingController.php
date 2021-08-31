@@ -77,11 +77,17 @@ class SettingController extends Controller
     {
         $data=array();
           $data['fajr']=$request->fajr;
+          $data['fajr_bn']=$request->fajr_bn;
           $data['johr']=$request->johr;
+          $data['johr_bn']=$request->johr_bn;
           $data['asor']=$request->asor;
+          $data['asor_bn']=$request->asor_bn;
           $data['magrib']=$request->magrib;
+          $data['magrib_bn']=$request->magrib_bn;
           $data['esha']=$request->esha;
+          $data['esha_bn']=$request->esha_bn;
           $data['jummah']=$request->jummah;
+          $data['jummah_bn']=$request->jummah_bn;
 
           DB::table('namaz')->where('id',$id)->update($data);
 
@@ -143,7 +149,8 @@ class SettingController extends Controller
      public function notice_update(Request $request,$id)
     {
           $data=array();
-          $data['notice']=$request->notice;        
+          $data['notice']=$request->notice;
+          $data['notice_en']=$request->notice_en;        
           DB::table('notices')->where('id',$id)->update($data);
           $notification=array(
                         'messege'=>'Successfully Update',

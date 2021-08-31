@@ -35,7 +35,8 @@
              <form action="{{ route('important_website_update',$data->id) }}" method="Post">
               @csrf
               @csrf
-                 <div class="form-group">
+              <div class="form-row">
+                <div class="form-group col-md-6">
                    <label for="exampleInputEmail1">Website Name Bangla</label>
                    <input type="text" class="form-control @error('website_name_bn') is-invalid @enderror" id="english" aria-describedby="emailHelp" name="website_name_bn" required="" value="{{$data->website_name_bn}}">
                      @error('website_name_bn')
@@ -44,8 +45,10 @@
 		              </span>
 		              @enderror
                  </div>
+                </div>
 
-                 <div class="form-group">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
                   <label for="exampleInputEmail1">Website Name English</label>
                   <input type="text" class="form-control @error('website_name_en') is-invalid @enderror" id="english" aria-describedby="emailHelp" name="website_name_en" required="" value="{{$data->website_name_en}}">
                     @error('website_name_en')
@@ -54,8 +57,10 @@
                  </span>
                  @enderror
                 </div>
+              </div>
 
-                 <div class="form-group">
+              <div class="form-row">
+                <div class="form-group col-md-6">
                    <label for="exampleInputPassword1">Website Link</label>
                    <input type="text" class="form-control @error('website_link') is-invalid @enderror" id="bangla" name="website_link" required="" value="{{$data->website_link}}">
                       @error('website_link')
@@ -64,7 +69,7 @@
 		              </span>
 		          @enderror
                  </div>
-          
+              </div>
        
               <button type="submit" class="btn btn-info">Update</button>
              </form>

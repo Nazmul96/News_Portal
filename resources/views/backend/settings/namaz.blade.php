@@ -32,32 +32,69 @@
                   <!-- form start -->
                   <form action="{{route('namaz_update',$namaz->id)}}" method="Post">
                     @csrf
-                  <div class="card-body">  
-                    <div class="form-group">
+                  <div class="card-body"> 
+                    <div class="row"> 
+                    <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Fajr</label>
                         <input type="text" class="form-control " value="{{ $namaz->fajr }}" aria-describedby="emailHelp" name="fajr" required="">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="exampleInputEmail1">ফজর</label>
+                      <input type="text" class="form-control " value="{{ $namaz->fajr_bn }}" aria-describedby="emailHelp" name="fajr_bn" required="">
+                  </div>
+                  </div>
+                  <div class="row"> 
+                      <div class="form-group col-md-6">
+                      <label for="exampleInputEmail1">Johr</label>
+                      <input type="text" class="form-control " value="{{ $namaz->johr }}" aria-describedby="emailHelp" name="johr" required="">
                       </div>
-                        <div class="form-group">
-                        <label for="exampleInputEmail1">Johr</label>
-                        <input type="text" class="form-control " value="{{ $namaz->johr }}" aria-describedby="emailHelp" name="johr" required="">
-                      </div>
-                        <div class="form-group">
+
+                      <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">যোহর</label>
+                        <input type="text" class="form-control " value="{{ $namaz->johr_bn }}" aria-describedby="emailHelp" name="johr_bn" required="">
+                        </div>
+                  </div>
+                  <div class="row">     
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Asor</label>
                         <input type="text" class="form-control " value="{{ $namaz->asor }}" aria-describedby="emailHelp" name="asor" required="">
-                      </div>
-                        <div class="form-group">
+                       </div>
+                       <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">আছর</label>
+                        <input type="text" class="form-control " value="{{ $namaz->asor_bn }}" aria-describedby="emailHelp" name="asor_bn" required="">
+                       </div>
+                  </div> 
+                  <div class="row">     
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">magrib</label>
                         <input type="text" class="form-control " value="{{ $namaz->magrib }}" aria-describedby="emailHelp" name="magrib" required="">
-                      </div>
-                        <div class="form-group">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="exampleInputEmail1">মাগরিব</label>
+                          <input type="text" class="form-control " value="{{ $namaz->magrib_bn }}" aria-describedby="emailHelp" name="magrib_bn" required="">
+                          </div>
+                  </div> 
+                  <div class="row">     
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Esha</label>
                         <input type="text" class="form-control " value="{{ $namaz->esha }}" aria-describedby="emailHelp" name="esha" required="">
-                      </div>
-                        <div class="form-group">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="exampleInputEmail1">এশা</label>
+                          <input type="text" class="form-control " value="{{ $namaz->esha_bn }}" aria-describedby="emailHelp" name="esha_bn" required="">
+                        </div>
+                  </div> 
+                  <div class="row">      
+                        <div class="form-group  col-md-6">
                         <label for="exampleInputEmail1">Jummah</label>
                         <input type="text" class="form-control " value="{{ $namaz->jummah }}" aria-describedby="emailHelp" name="jummah" required="">
-                      </div>
-                   
+                        </div>
+                        <div class="form-group  col-md-6">
+                          <label for="exampleInputEmail1">জুম্মা</label>
+                          <input type="text" class="form-control " value="{{ $namaz->jummah_bn }}" aria-describedby="emailHelp" name="jummah_bn" required="">
+                          </div>
+                  </div> 
                
                  </div>
                   <button type="submit" class="btn btn-success btn-block">Update</button>

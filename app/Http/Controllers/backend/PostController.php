@@ -91,7 +91,7 @@ class PostController extends Controller
      public function update(Request $request,$id){
         $validatedData = $request->validate([
             'cat_id' => 'required',
-            'subcat_id' => 'required',
+            
         ]);
 
        $data=array();

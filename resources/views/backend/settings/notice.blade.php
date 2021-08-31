@@ -39,10 +39,16 @@
                     @csrf
                   <div class="card-body">  
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Notice</label>
+                        <label for="exampleInputEmail1">Notice Bangla</label>
                         <textarea type="text" class="form-control " aria-describedby="emailHelp" name="notice" required="">  
                             {{ $notice->notice }}
                         </textarea>
+
+                        <label for="exampleInputEmail1">Notice English</label>
+                        <textarea type="text" class="form-control " aria-describedby="emailHelp" name="notice_en" required="">  
+                            {{ $notice->notice_en }}
+                        </textarea>
+
                         @if($notice->status == 1)
                           <small class="text-success">Now Notice are Active</small>
                         @else    
