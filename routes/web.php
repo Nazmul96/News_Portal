@@ -109,3 +109,10 @@ Route::post('/important_website_update/{id}','backend\settingController@update')
  //Language-----
  Route::get('/language_ban','frontend\ExtraController@bangla')->name('language_ban');
  Route::get('/language_en','frontend\ExtraController@english')->name('language_en');
+
+ //single post
+Route::get('view-post/{id}/{slug}','Frontend\ExtraController@SinglePost');
+Route::get('posts/{id}/{subcategory_bn}','Frontend\ExtraController@AllPost');
+Route::get('post/{id}/{category_bn}','Frontend\ExtraController@AllPostscat');
+Route::get('get/subdist/frontend/{dist_id}','Frontend\ExtraController@GetSubDist');
+Route::get('saradesh/','Frontend\ExtraController@Saradesh')->name('saradesh.news');
