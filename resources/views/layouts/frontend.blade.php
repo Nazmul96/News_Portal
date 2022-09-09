@@ -9,6 +9,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		@yield('meta')
 		<meta name="author" content="{{ $seo->meta_author }}">
         <meta name="keyword" content="{{ $seo->meta_keyword }}">
         <meta name="description" content="{{ $seo->meta_description }}">

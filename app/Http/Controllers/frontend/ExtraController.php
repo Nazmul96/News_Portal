@@ -34,6 +34,8 @@ class ExtraController extends Controller
                         ->select('posts.*','categories.category_bn','categories.category_en','subcategories.subcategory_bn','subcategories.subcategory_en','users.name')
                         ->where('posts.id',$id)
                         ->first();
+            // echo '<pre>';
+            // print_r($post);die();            
            return view('frontend.singlepost',compact('post'));  
     }
 }

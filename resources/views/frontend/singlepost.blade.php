@@ -1,6 +1,14 @@
 @extends('layouts.frontend')
+@section('meta')
+  <meta property="og:url" content="{{Request::fullUrl()}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ $post->title_bn }}" />
+  <meta property="og:description" content="{{ $post->details_bn }}" />
+  <meta property="og:image" content="{{URL::to($post->image)}}" />
+@endsection
 
 @section('content')
+
 	<!-- single-page-start -->
 	<section class="single-page">
 		<div class="container-fluid">
@@ -10,7 +18,7 @@
 					   <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>					   
 						<li>
                             <a href="#">
-                                @if(session()->get('lang') == 'english')
+                                @if(session()->get('language') == 'English')
 							         {{ $post->category_en }}
                                 @else
                                      {{ $post->category_bn }}
@@ -19,7 +27,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                @if(session()->get('lang') == 'english')
+                                @if(session()->get('language') == 'English')
                                     {{ $post->subcategory_en }}
                                 @else
                                     {{ $post->subcategory_bn }}
@@ -33,7 +41,7 @@
 				<div class="col-md-12 col-sm-12"> 											
 					<header class="headline-header margin-bottom-10">
 						<h1 class="headline">
-                            @if(session()->get('lang') == 'english')
+                            @if(session()->get('language') == 'English')
 								{{ $post->title_en }}
 							@else
 								{{ $post->title_bn }}
@@ -64,20 +72,32 @@
 				<div class="single-news">
 					<img src="{{asset($post->image)}}" alt="{{ $post->title_bn }}"/>
 					<h4 class="caption"> 
-                        @if(session()->get('lang') == 'english')
+                        @if(session()->get('language') == 'English')
 								{{ $post->title_en }}
                         @else
                             {{ $post->title_bn }}
                         @endif
+						<br><br><div class="sharethis-inline-share-buttons" data-href="{{Request::url()}}"></div><br>
                     </h4>
 					<p>
-                        @if(session()->get('lang') == 'english')
+                        @if(session()->get('language') == 'English')
                         {!! $post->details_en !!}
                         @else
                             {!! $post->details_bn !!}
                         @endif 
                     </p>
 				</div>
+
+				<div class="comment-section " style="width: 100%;"> 
+					<!-- Begin .title-style01 -->
+					<div class=" comment-title title-style01 ">
+					  <h4> Comments</h4>
+					</div>
+					<!-- End .title-style01 -->
+					
+					<div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>	
+					</div>
+				</div><hr>
 
                 @php
 				   $more=DB::table('posts')->where('cat_id',$post->cat_id)->orderBy('id','DESC')->limit(6)->get();
@@ -86,7 +106,7 @@
 				<div class="row">
 					<div class="col-md-12">
                     <h2 class="heading">
-                        @if(session()->get('lang') == 'english')
+                        @if(session()->get('language') == 'English')
 					        More News
                         @else
                             আরো সংবাদ
@@ -104,7 +124,7 @@
                                 </a>
 								<h4 class="heading-02" style="height: 60px;">
                                     <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
-                                        @if(session()->get('lang') == 'english')
+                                        @if(session()->get('language') == 'English')
                                             {{ $row->title_en }}
                                         @else
                                         {{ $row->title_bn }}
@@ -134,21 +154,21 @@
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs nav-justified" role="tablist">
 							<li role="presentation" class="active"><a href="#tab21" aria-controls="tab21" role="tab" data-toggle="tab" aria-expanded="false">
-								@if(session()->get('lang') == 'english')
+								@if(session()->get('language') == 'English')
 							          	Latest News
 							    @else
 							          	সর্বশেষ
 							    @endif</a>
 							</li>
 							<li role="presentation" ><a href="#tab22" aria-controls="tab22" role="tab" data-toggle="tab" aria-expanded="true">
-								@if(session()->get('lang') == 'english')
+								@if(session()->get('language') == 'English')
 							          	Favourite
 							    @else
 							          	জনপ্রিয়
 							    @endif</a>
 							</li>
 							<li role="presentation" ><a href="#tab23" aria-controls="tab23" role="tab" data-toggle="tab" aria-expanded="true">
-								@if(session()->get('lang') == 'english')
+								@if(session()->get('language') == 'English')
 							          	Highest Read
 							    @else
 							          	পঠিত 
@@ -164,7 +184,7 @@
 
 									    <div class="news-title-02">
 										    <h4 class="heading-03"><a href="">
-										    		@if(session()->get('lang') == 'english')
+										    		@if(session()->get('language') == 'English')
 							          					{{ $row->title_en }}
 												    @else
 												          	{{ $row->title_bn }}
@@ -180,7 +200,7 @@
 
 									    <div class="news-title-02">
 										    <h4 class="heading-03"><a href="">
-										    		@if(session()->get('lang') == 'english')
+										    		@if(session()->get('language') == 'English')
 							          					{{ $row->title_en }}
 												    @else
 												          	{{ $row->title_bn }}
@@ -197,7 +217,7 @@
 
 									    <div class="news-title-02">
 										    <h4 class="heading-03"><a href="">
-										    		@if(session()->get('lang') == 'english')
+										    		@if(session()->get('language') == 'English')
 							          					{{ $row->title_en }}
 												    @else
 												          	{{ $row->title_bn }}
@@ -220,4 +240,8 @@
 		</div>
 	</section>
 
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=614108756891346&autoLogAppEvents=1" nonce="4Y7Qiinr"></script>
+
+	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=631b0cdeabecf600135ed5b7&product=inline-share-buttons" async="async" data-href="{{Request::url()}}"></script>
     @endsection
