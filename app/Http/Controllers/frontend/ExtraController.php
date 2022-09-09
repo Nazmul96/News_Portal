@@ -38,4 +38,17 @@ class ExtraController extends Controller
             // print_r($post);die();            
            return view('frontend.singlepost',compact('post'));  
     }
+
+    public function AllPost($id,$subcategory_bn)
+    {
+        $posts=DB::table('posts')->where('subcat_id',$id)->orderBy('id','DESC')->paginate(15);
+        return view('frontend.allposts',compact('posts'));
+    }
+
+    public function AllPostscat($id ,$category_bn)
+    {
+        $posts=DB::table('posts')->where('cat_id',$id)->orderBy('id','DESC')->paginate(15);
+        return view('frontend.allposts',compact('posts'));
+    }
+
 }

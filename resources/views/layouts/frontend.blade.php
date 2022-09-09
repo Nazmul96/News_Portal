@@ -84,7 +84,7 @@
 											  $subcategory=DB::table('subcategories')->where('category_id',$row->id)->get();	
 											@endphp
 											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+												<a href="{{ URL::to('post/'.$row->id.'/'.$row->category_bn)}}" class="dropdown-toggle" data-toggle="dropdown">
 														
 												@if(session()->get('language') == 'English')
 													{{ $row->category_en }} 
@@ -93,7 +93,7 @@
 												  @endif</a>
 											<ul class="dropdown-menu">
 												@foreach ($subcategory as $row)
-												   <li><a href="#">
+												   <li><a href="{{ URL::to('posts/'.$row->id.'/'.$row->subcategory_bn)}}">
 												@if(session()->get('language') == 'English')
 													{{ $row->subcategory_en }} 
 												 @else

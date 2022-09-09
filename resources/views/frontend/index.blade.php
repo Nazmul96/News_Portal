@@ -77,7 +77,7 @@
 							        @else
 									    {{ $firstcat->category_bn }}
 							        @endif
-									<a href="#"><span>
+									<a href="{{ URL::to('post/'.$firstcat->id.'/'.$firstcat->category_bn)}}"><span>
 										@if(session()->get('language')== 'English')	
 										  <i class="fa fa-angle-double-right"  aria-hidden="true">More</i>
 							            @else
@@ -131,7 +131,7 @@
 							        @else
 									    {{ $secondcat->category_bn }}
 							        @endif
-									<a href="#"><span>
+									<a href="{{ URL::to('post/'.$secondcat->id.'/'.$secondcat->category_bn)}}"><span>
 										@if(session()->get('language')== 'English')	
 										  <i class="fa fa-angle-double-right"  aria-hidden="true">More</i>
 							            @else
@@ -238,7 +238,7 @@
 							@else
 							  {{ $thirdcat->category_bn }}
 							@endif
-							<a href="#"><span>
+							<a href="{{ URL::to('post/'.$thirdcat->id.'/'.$thirdcat->category_bn)}}"><span>
 							  @if(session()->get('language')== 'English')	
 									<i class="fa fa-angle-double-right"  aria-hidden="true">More</i>
 							 @else
@@ -294,7 +294,7 @@
 							@else
 							  {{ $fourthcat->category_bn }}
 							@endif
-							<a href="#"><span>
+							<a href="{{ URL::to('post/'.$fourthcat->id.'/'.$fourthcat->category_bn)}}"><span>
 							  @if(session()->get('language')== 'English')	
 									<i class="fa fa-angle-double-right"  aria-hidden="true">More</i>
 							 @else
@@ -350,7 +350,7 @@
 							@else
 							  {{ $fifthcat->category_bn }}
 							@endif
-							<a href="#"><span>
+							<a href="{{ URL::to('post/'.$fifthcat->id.'/'.$fifthcat->category_bn)}}"><span>
 							  @if(session()->get('language')== 'English')	
 									<i class="fa fa-angle-double-right"  aria-hidden="true">More</i>
 							 @else
@@ -408,7 +408,7 @@
 							@else
 							  {{ $sixthcat->category_bn }}
 							@endif
-							<a href="#"><span>
+							<a href="{{ URL::to('post/'.$sixthcat->id.'/'.$sixthcat->category_bn)}}"><span>
 							  @if(session()->get('language')== 'English')	
 									<i class="fa fa-angle-double-right"  aria-hidden="true">More</i>
 							 @else
@@ -611,21 +611,21 @@
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs nav-justified" role="tablist">
 							<li role="presentation" class="active"><a href="#tab21" aria-controls="tab21" role="tab" data-toggle="tab" aria-expanded="false">
-								@if(session()->get('lang') == 'english')
+								@if(session()->get('language') == 'English')
 							          	Latest News
 							    @else
 							          	সর্বশেষ
 							    @endif</a>
 							</li>
 							<li role="presentation" ><a href="#tab22" aria-controls="tab22" role="tab" data-toggle="tab" aria-expanded="true">
-								@if(session()->get('lang') == 'english')
+								@if(session()->get('language') == 'English')
 							          	Favourite
 							    @else
 							          	জনপ্রিয়
 							    @endif</a>
 							</li>
 							<li role="presentation" ><a href="#tab23" aria-controls="tab23" role="tab" data-toggle="tab" aria-expanded="true">
-								@if(session()->get('lang') == 'english')
+								@if(session()->get('language') == 'English')
 							          	Highest Read
 							    @else
 							          	পঠিত 
@@ -638,10 +638,12 @@
 							<div role="tabpanel" class="tab-pane in active" id="tab21">
 								<div class="news-titletab">
 									@foreach($latest as $row)
-
+										@php
+										$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+									    @endphp
 									    <div class="news-title-02">
-										    <h4 class="heading-03"><a href="">
-										    		@if(session()->get('lang') == 'english')
+										    <h4 class="heading-03"><a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
+										    		@if(session()->get('language') == 'English')
 							          					{{ $row->title_en }}
 												    @else
 												          	{{ $row->title_bn }}
@@ -654,10 +656,12 @@
 							<div role="tabpanel" class="tab-pane fade" id="tab22">
 								<div class="news-titletab">
 									@foreach($favourite as $row)
-
+										@php
+										$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+										@endphp
 									    <div class="news-title-02">
-										    <h4 class="heading-03"><a href="">
-										    		@if(session()->get('lang') == 'english')
+										    <h4 class="heading-03"><a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
+										    		@if(session()->get('language') == 'English')
 							          					{{ $row->title_en }}
 												    @else
 												          	{{ $row->title_bn }}
@@ -671,10 +675,12 @@
 								<div class="news-titletab">
 								
 									@foreach($highest as $row)
-
+										@php
+										$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+										@endphp
 									    <div class="news-title-02">
-										    <h4 class="heading-03"><a href="">
-										    		@if(session()->get('lang') == 'english')
+										    <h4 class="heading-03"><a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
+										    		@if(session()->get('language') == 'English')
 							          					{{ $row->title_en }}
 												    @else
 												          	{{ $row->title_bn }}

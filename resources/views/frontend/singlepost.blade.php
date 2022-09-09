@@ -99,45 +99,7 @@
 					</div>
 				</div><hr>
 
-                @php
-				   $more=DB::table('posts')->where('cat_id',$post->cat_id)->orderBy('id','DESC')->limit(6)->get();
-				@endphp
-				<!-- ********* -->
-				<div class="row">
-					<div class="col-md-12">
-                    <h2 class="heading">
-                        @if(session()->get('language') == 'English')
-					        More News
-                        @else
-                            আরো সংবাদ
-                        @endif
-                    </h2>
-                </div><hr>
-				 @foreach( $more as $row)	
-					@php
-						$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
-					@endphp
-						<div class="col-md-4 col-sm-4">
-							<div class="top-news sng-border-btm">
-								<a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
-                                    <img src="{{ asset($row->image) }}" alt="{{ $row->title_bn }}">
-                                </a>
-								<h4 class="heading-02" style="height: 60px;">
-                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
-                                        @if(session()->get('language') == 'English')
-                                            {{ $row->title_en }}
-                                        @else
-                                        {{ $row->title_bn }}
-                                        @endif
-								    </a> 
-                                </h4>
-							</div>
-						</div>
-				@endforeach
-				</div>
-				
-			</div>
-            @php
+				@php
 				$latest=DB::table('posts')->orderBy('id','DESC')->limit(8)->get();
 				$favourite=DB::table('posts')->inRandomOrder()->orderBy('id','DESC')->limit(8)->get();
 				$highest=DB::table('posts')->inRandomOrder()->orderBy('id','ASC')->limit(8)->get();
@@ -237,6 +199,45 @@
 					</div><!-- /.add-close -->
 			</div>
 		  </div>
+	
+			</div>
+			@php
+			$more=DB::table('posts')->where('cat_id',$post->cat_id)->orderBy('id','DESC')->limit(6)->get();
+		 @endphp
+		 <!-- ********* -->
+		 <div class="row">
+			 <div class="col-md-12">
+			 <h2 class="heading">
+				 @if(session()->get('language') == 'English')
+					 More News
+				 @else
+					 আরো সংবাদ
+				 @endif
+			 </h2>
+		 </div><hr>
+		  @foreach( $more as $row)	
+			 @php
+				 $slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+			 @endphp
+				 <div class="col-md-4 col-sm-4">
+					 <div class="top-news sng-border-btm">
+						 <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
+							 <img src="{{ asset($row->image) }}" alt="{{ $row->title_bn }}">
+						 </a>
+						 <h4 class="heading-02" style="height: 60px;">
+							 <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
+								 @if(session()->get('language') == 'English')
+									 {{ $row->title_en }}
+								 @else
+								 {{ $row->title_bn }}
+								 @endif
+							 </a> 
+						 </h4>
+					 </div>
+				 </div>
+		 @endforeach
+		 </div>
+        
 		</div>
 	</section>
 
