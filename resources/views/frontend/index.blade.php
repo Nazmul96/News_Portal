@@ -488,18 +488,23 @@
 						@endif
 					 </span></a> 
 					</div>
-					
+					@php
+						$divisions=DB::table('divisions')->get();
+					@endphp
 					<div class="row">
-						<form action="" method="get">
+						<form action="{{ route('saradesh.news') }}" method="get">
 							@csrf
 							<div class="row">
 								<div class="col-lg-4">
-									<select class="form-control" name="dist_id" id="dist_id" required>
-										
+									<select class="form-control" name="division_id" id="division_id" required>
+											<option selected="">==choose one==</option>
+											@foreach($divisions as $row)
+											<option value="{{ $row->id }}">{{ $row->division_bn }}</option>
+											@endforeach
 									</select>
 								</div>
 									<div class="col-lg-4">
-									<select class="form-control" name="subdist_id" id="subdist_id" required>
+									<select class="form-control" name="district_id" id="district_id" required>
 											<option selected="">==choose one==</option>
 									</select>
 								</div>
@@ -507,7 +512,8 @@
 									<button class="btn btn-success btn-block" type="submit"> খুজুন</button>
 								</div>
 							</div>
-					   </form><hr>
+					   </form>
+					   <hr>
 						<div class="col-md-4 col-sm-4">
 							<div class="top-news">
 								<a href="#"><img src="{{asset($country_big->image)}}" alt="Notebook"></a>
@@ -1005,5 +1011,30 @@
 			</div>
 		</div>
 	</section><!-- /.gallery-section-close -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		  $('select[name="division_id"]').on('change', function(){
+			  var division_id = $(this).val();
+			  if(division_id) {
+				  $.ajax({
+					  url: "{{  url('/get/subdist/frontend/') }}/"+division_id,
+					  type:"GET",
+					  dataType:"json",
+					  success:function(data) {
+						 $("#district_id").empty();
+							   $.each(data,function(key,value){
+								   $("#district_id").append('<option value="'+value.id+'">'+value.district_bn+'</option>');
+							   });
+					  },
+					 
+				  });
+			  } else {
+				  alert('danger');
+			  }
+		  });
+	  });
+ </script>
+ 
 @endsection
